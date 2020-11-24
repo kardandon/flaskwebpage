@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block body %}
+	<form action="/" method="get">
+			<button type="submit"> HOME </button>
+	</form>
+    <h3 style='color: #ccc;font-size: 30px;'>Messages are loading</h3>
+    <div class="message_holder"></div>
+
+    <form action="" method="POST">
+      <input type="text" name = "message" class="message" placeholder="Messages"/>
+      <input type="submit"/>
+    </form>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script>
+		var previous = null;
+		var current = null;
+		var initial = 0;
+		setInterval(function() {
+			$.get("/chatjson", function(json) {
+				current = JSON.stringify(json);
+				if ((previous && current && previous !== current) || (current && initial == 0)) {
+					initial = 1;
+					console.log("hi")
+					let html = "";
+					for (let id in json)
+					{
+						let name = json[id]["username"];
+						let color = json[id]["color"];
+						let message = json[id]["message"];
+						let date = json[id]["date"];
+						html +=  '<div><b style="color: #' + color +'">'+ name +':  </b> '+ message + '<em style = "color: #C5C5C5">  ' + date +'  </em> </div>' ;
+					}
+					document.querySelector('h3').innerHTML = "EPIC CHAT";
+					document.querySelector('div').innerHTML = html;
+				}
+				previous = current;
+			});
+		}, 2000);
+	</script>
+
+{% endblock %}

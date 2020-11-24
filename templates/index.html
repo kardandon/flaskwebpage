@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block body %}
+		<h1> BOUN Sport Course</h1>
+		{% if login %}
+		<h3> Hello {{ username }} </h3>
+		<form action="/" method="post">
+			<select name="sport">
+				<option disabled selected value="">Sport</option>
+				{% for sport in sports %}
+					<option value="{{ sport }}">{{ sport }}</option>
+				{% endfor %}
+			</select>
+			<button type="submit"> Choose Sport</button>
+		</form>
+		<form action="/chat" method="get">
+			<button type="submit"> Chat</button>
+		</form>
+		<form action="/logout" method="get">
+			<button type="submit"> Log Out</button>
+		</form>
+		{% else %}
+		<form action="/login" method="get">
+			<button type="submit"> Login</button>
+		</form>
+		<form action="/register" method="get">
+			<button type="submit"> Register</button>
+		</form>
+		{% endif %}
+		<form action="/search" method="get">
+			<button type="submit"> Search</button>
+		</form>
+		<form action="/search2" method="get">
+			<button type="submit"> Search Jscript </button>
+		</form>
+		<form action="/list" method="get">
+			<button type="submit"> List </button>
+		</form>
+		
+{% endblock %}

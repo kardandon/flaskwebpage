@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block body %}
+		<form action="/" method="get">
+			<button type="submit"> HOME </button>
+		</form>
+		<h1> BOUN Sport Course</h1>
+		<h2> Log In</h2>
+		<form action="/login" method="post">
+			<input autocomplete="off" autofocus placeholder="User Name" name="username" type="text">
+			<input autocomplete="off" autofocus placeholder="Password" name="password" type="password">
+			<button type="submit"> Login </button>
+		</form>
+
+{% endblock %}

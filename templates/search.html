@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+table.center {
+  margin-left: auto; 
+  margin-right: auto;
+}
+</style>
+		<form action="/" method="get">
+			<button type="submit"> HOME </button>
+		</form>
+		<form action="/search" method="get">
+			<input autocomplete="off" autofocus placeholder="Search" name="q" type="text">
+			<input type="submit" value="search">
+		</form>
+		{% if query != None %}
+		<h1> Results for {{ query }} </h1>
+
+		<table class="center">
+		 <tr>
+			<th> ID         </th>
+			<th> Name       </th>
+			<th> Sport      </th>
+			<th> Date       </th>
+		</tr>
+		{% for row in values %}
+			<tr>
+				<td> {{ row[0] }} </td>
+				<td> {{ row[1] }} </td>
+				<td> {{ row[2] }} </td>
+				<td> {{ row[3] }} </td>
+			</tr>
+		{% endfor %}
+		</table>
+		{% endif %}
+{% endblock %}

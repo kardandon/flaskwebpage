@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block body %}
+<p>
+	{{ name }} is registered to {{ sport }}
+	<br>
+	You will be redirected in 2 seconds
+		</br>
+	</p>
+	<script>    
+     window.setTimeout(function(){
+
+       window.location.href = "/list";
+
+       }, 2000);
+
+ </script>
+{% endblock %}
