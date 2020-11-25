@@ -209,6 +209,6 @@ for code in default_exceptions:
     app.errorhandler(code)(errorhandler)
 
 if __name__ == '__main__':
-    Flask.run(app)
+    app.run(threaded=True, port=5000)
 
 
