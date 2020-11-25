@@ -18,7 +18,7 @@
 		setInterval(function() {
 			$.get("/chatjson", function(json) {
 				current = JSON.stringify(json);
-				if ((previous && current && previous !== current) ) {
+				if ((previous && current && previous !== current && current != "[]") ) {
 					let html = "";
 					for (let id in json)
 					{
