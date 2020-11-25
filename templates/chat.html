@@ -15,13 +15,10 @@
 	<script>
 		var previous = null;
 		var current = null;
-		var initial = 0;
 		setInterval(function() {
 			$.get("/chatjson", function(json) {
 				current = JSON.stringify(json);
-				if ((previous && current && previous !== current) || (current && initial == 0)) {
-					initial = 1;
-					console.log("hi")
+				if ((previous && current && previous !== current) ) {
 					let html = "";
 					for (let id in json)
 					{
